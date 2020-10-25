@@ -5,7 +5,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class base {
 
     public  WebDriver driver;
-    public void initializeDriver() throws IOException {
+    public WebDriver initializeDriver() throws IOException {
         Properties prop=new Properties();
         FileInputStream fis=new FileInputStream("C:\\Users\\Jathin\\IdeaProjects\\Framework\\src\\main\\java\\e2e\\data.properties");
         prop.load(fis);
@@ -30,5 +29,7 @@ public class base {
             driver=new FirefoxDriver();
         }
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return driver;
     }
 }
