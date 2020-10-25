@@ -1,4 +1,4 @@
-package e2e;
+package resources;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,7 +14,7 @@ public class Base {
     public  WebDriver driver;
     public WebDriver initializeDriver() throws IOException {
         Properties prop=new Properties();
-        FileInputStream fis=new FileInputStream("C:\\Users\\Jathin\\IdeaProjects\\Framework\\src\\main\\java\\e2e\\data.properties");
+        FileInputStream fis=new FileInputStream("C:\\Users\\Jathin\\IdeaProjects\\Framework\\src\\main\\java\\resources\\data.properties");
         prop.load(fis);
         String browserName=prop.getProperty("browser");
 
