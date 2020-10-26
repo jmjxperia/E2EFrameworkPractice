@@ -16,18 +16,19 @@ public class Base {
     public Properties prop;
     public WebDriver initializeDriver() throws IOException {
         prop=new Properties();
-        FileInputStream fis=new FileInputStream("C:\\Users\\Jathin\\IdeaProjects\\Framework\\src\\main\\java\\resources\\data.properties");
+        String projectPath=System.getProperty("user.dir");
+        FileInputStream fis=new FileInputStream(projectPath+"\\src\\main\\java\\resources\\data.properties");
         prop.load(fis);
         String browserName=prop.getProperty("browser");
 
         if(browserName.equals("opera"))
         {
-            System.setProperty("webdriver.opera.driver","C:\\Users\\Jathin\\Downloads\\Compressed\\operadriver_win64\\operadriver_win64\\operadriver.exe");
+            System.setProperty("webdriver.opera.driver",projectPath+"\\drivers\\operadriver.exe");
             driver=new OperaDriver();
 
         } else if(browserName.equals("firefox"))
         {
-            System.setProperty("webdriver.gecko.driver","C:\\Users\\Jathin\\Downloads\\Compressed\\geckodriver-v0.27.0-win64\\geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver",projectPath+"\\drivers\\geckodriver.exe");
             driver=new FirefoxDriver();
         }
 
