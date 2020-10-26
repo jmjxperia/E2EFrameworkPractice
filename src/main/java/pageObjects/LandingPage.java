@@ -8,21 +8,36 @@ public class LandingPage {
 
     public WebDriver driver;
 
-    By dropDownLogin=By.xpath("//div[@class='dropdown dropdown-login dropdown-tab']");
-    By logIn=By.linkText("Login");
+    By loginHeader=By.id("menuUserLink");
+    By username=By.xpath("//input[@name='username']");
+    By password=By.xpath("//input[@name='password']");
+    By login=By.cssSelector("[id='sign_in_btnundefined']");
 
     public LandingPage(WebDriver driver) {
         this.driver=driver;
     }
 
-    public WebElement clickDropDown()
+
+    public WebElement enterUsername()
     {
-        return driver.findElement(dropDownLogin);
+        return driver.findElement(username);
     }
 
-    public WebElement getLogin()
-   {
-       return driver.findElement(logIn);
+    public WebElement enterPassword()
+    {
+        return driver.findElement(password);
     }
+
+    public  WebElement clickLogin()
+    {
+        return  driver.findElement(login);
+    }
+
+
+    public WebElement clickLoginHeader()
+    {
+        return driver.findElement(loginHeader);
+    }
+
 
 }

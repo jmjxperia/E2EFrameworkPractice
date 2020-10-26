@@ -1,33 +1,38 @@
 package e2e;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageObjects.CookieDialog;
 import pageObjects.LandingPage;
-import pageObjects.LoginPage;
 import resources.Base;
 
 import java.io.IOException;
 
 public class HomePage extends Base {
 
-    @Test
-    public void basePageNavigation() throws IOException {
+    @Test(dataProvider = "getData")
+    public void basePageNavigation(String email,String pwd) throws IOException {
         driver=initializeDriver();
         driver.manage().window().maximize();
-        //parent link:https://phptravels.com/demo/
-        driver.get("https://www.phptravels.net");
 
-        CookieDialog c=new CookieDialog(driver);
-        c.acceptCookie().click();
+            driver.get(prop.getProperty("url"));
 
-        LandingPage l=new LandingPage(driver);
-        l.clickDropDown().click();
-        l.getLogin().click();
+            LandingPage l=new LandingPage(driver);
+            l.clickLoginHeader().click();
+            l.enterUsername().sendKeys(email);
+            l.enterPassword().sendKeys(pwd);
+            l.clickLogin().click();
 
-        LoginPage lo=new LoginPage(driver);
-        lo.enterEmail().sendKeys("user@phptravels.com");
-        lo.enterPassword().sendKeys("demouser");
-        lo.clickLogin().click();
+    }
 
+
+    @DataProvider
+    public Object[][] getData()
+    {
+        Object[][] data=new Object[1][2];
+
+            data[0][0] = "imtester";
+            data[0][1] = "qwertyQaz1";
+
+        return data;
     }
 }
