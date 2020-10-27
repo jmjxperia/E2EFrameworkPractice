@@ -14,13 +14,13 @@ public class HomePage extends Base {
         driver=initializeDriver();
         driver.manage().window().maximize();
 
-            driver.get(prop.getProperty("url"));
+        driver.get(prop.getProperty("url"));
 
-            LandingPage l=new LandingPage(driver);
-            l.clickLoginHeader().click();
-            l.enterUsername().sendKeys(email);
-            l.enterPassword().sendKeys(pwd);
-            l.clickLogin().click();
+        LandingPage l=new LandingPage(driver);
+        l.clickLoginHeader().click();
+        l.enterUsername().sendKeys(email);
+        l.enterPassword().sendKeys(pwd);
+        l.clickLogin().click();
 
     }
 
