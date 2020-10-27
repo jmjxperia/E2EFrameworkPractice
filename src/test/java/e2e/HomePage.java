@@ -1,5 +1,7 @@
 package e2e;
 
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.LandingPage;
@@ -9,13 +11,15 @@ import java.io.IOException;
 
 public class HomePage extends Base {
 
-    @Test(dataProvider = "getData")
-    public void basePageNavigation(String email,String pwd) throws IOException {
+    @BeforeTest
+    public void initialize() throws IOException {
         driver=initializeDriver();
         driver.manage().window().maximize();
-
         driver.get(prop.getProperty("url"));
+    }
 
+    @Test(dataProvider = "getData")
+    public void basePageNavigation(String email,String pwd) {
         LandingPage l=new LandingPage(driver);
         l.clickLoginHeader().click();
         l.enterUsername().sendKeys(email);
@@ -34,5 +38,14 @@ public class HomePage extends Base {
             data[0][1] = "qwertyQaz1";
 
         return data;
+    }
+
+    @AfterTest
+    public void closeWindow()
+    {
+        if(prop.getProperty("browser").equals("opera"))
+            driver.quit(); //in opera ,close method doesn't close the browser after window is closed
+        else if(prop.getProperty("browser").equals("firefox"))
+            driver.close();
     }
 }
