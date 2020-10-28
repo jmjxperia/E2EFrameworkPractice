@@ -12,6 +12,7 @@ public class LandingPage {
     By username=By.xpath("//input[@name='username']");
     By password=By.xpath("//input[@name='password']");
     By login=By.cssSelector("[id='sign_in_btnundefined']");
+    By message=By.xpath("//label[@id='signInResultMessage']");
     //By indexing
     By sTitle=By.xpath("(//h3[@class='roboto-regular center ng-scope'])[1]");
     //By Parent-child
@@ -84,9 +85,18 @@ public class LandingPage {
         return driver.findElement(cNav);
     }
 
+    public  WebElement getMessage()
+    {
+        return driver.findElement(message);
+    }
+
     public By locatorProduct()
     {
         return proNav;
     }
 
+    public By locatorLogin()
+    {
+        return login;
+    }
 }

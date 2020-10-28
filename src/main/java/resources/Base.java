@@ -1,10 +1,13 @@
 package resources;
 
-import org.apache.poi.ss.usermodel.PageOrder;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -34,5 +37,13 @@ public class Base {
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
+    }
+
+    public void getScreenshotPath(String testCaseName,WebDriver driver) throws IOException {
+        TakesScreenshot ts=(TakesScreenshot) driver;
+        File source=ts.getScreenshotAs(OutputType.FILE);
+        File destination= new File(System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png");
+        FileUtils.copyFile(source,destination);
+
     }
 }
