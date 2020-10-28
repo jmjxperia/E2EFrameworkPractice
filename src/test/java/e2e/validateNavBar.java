@@ -2,6 +2,7 @@ package e2e;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
 public class validateNavBar extends Base{
 
+    WebDriver driver;
     static Logger log= LogManager.getLogger(Base.class.getName());
 
     @BeforeTest
