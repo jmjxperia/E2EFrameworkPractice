@@ -1,5 +1,7 @@
 package e2e;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -11,20 +13,28 @@ import java.io.IOException;
 
 public class HomePage extends Base {
 
+    static Logger log= LogManager.getLogger(Base.class.getName());
+
     @BeforeTest
     public void initialize() throws IOException {
         driver=initializeDriver();
+        log.info("Initialized driver for Login");
         driver.manage().window().maximize();
         driver.get(prop.getProperty("url"));
+        log.info("Link opened");
     }
 
     @Test(dataProvider = "getData")
-    public void basePageNavigation(String email,String pwd) {
+    public void basePageNavigation(String userName,String pwd) {
         LandingPage l=new LandingPage(driver);
         l.clickLoginHeader().click();
-        l.enterUsername().sendKeys(email);
+        log.info("Clicked on Login Header");
+        l.enterUsername().sendKeys(userName);
+        log.info("Entered username");
         l.enterPassword().sendKeys(pwd);
+        log.info("Entered password");
         l.clickLogin().click();
+        log.info("Clicked login");
 
     }
 
@@ -43,9 +53,12 @@ public class HomePage extends Base {
     @AfterTest
     public void closeWindow()
     {
-        if(prop.getProperty("browser").equals("opera"))
-            driver.quit(); //in opera ,close method doesn't close the browser after window is closed
-        else if(prop.getProperty("browser").equals("firefox"))
+        if(prop.getProperty("browser").equals("opera")) {
+            driver.quit();//in opera ,close method doesn't close the browser after window is closed
+            log.info("Closed Opera browser after login");
+        }else if(prop.getProperty("browser").equals("firefox")) {
             driver.close();
+            log.info("Closed Firefox browser after login");
+        }
     }
 }
