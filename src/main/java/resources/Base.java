@@ -42,7 +42,7 @@ public class Base {
     public String getScreenshotPath(String testCaseName, WebDriver driver) throws IOException {
         TakesScreenshot ts=(TakesScreenshot) driver;
         File source=ts.getScreenshotAs(OutputType.FILE);
-        String destination= System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
+        String destination= System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".jpg";
         FileUtils.copyFile(source,new File(destination));
         return destination;
 
