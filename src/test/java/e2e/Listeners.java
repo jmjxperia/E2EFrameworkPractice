@@ -39,7 +39,8 @@ public class Listeners extends Base implements ITestListener {
         }
 
         try {
-            getScreenshotPath(testMethodName,driver);
+            test.addScreenCaptureFromPath(getScreenshotPath(testMethodName,driver),testMethodName);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
