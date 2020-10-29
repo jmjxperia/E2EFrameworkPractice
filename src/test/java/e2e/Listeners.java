@@ -2,6 +2,7 @@ package e2e;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
@@ -39,9 +40,9 @@ public class Listeners extends Base implements ITestListener {
             e.printStackTrace();
         }
 
+        // extentTest.get().addScreenCaptureFromPath(getScreenshotPath(testMethodName,driver),testMethodName);
         try {
-            extentTest.get().addScreenCaptureFromPath(getScreenshotPath(testMethodName,driver),testMethodName);
-
+            extentTest.get().fail(MediaEntityBuilder.createScreenCaptureFromPath(getScreenshotPath(testMethodName,driver)).build());
         } catch (IOException e) {
             e.printStackTrace();
         }
