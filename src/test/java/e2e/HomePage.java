@@ -37,6 +37,7 @@ public class HomePage extends Base {
         log.info("Entered username");
         l.enterPassword().sendKeys(pwd);
         log.info("Entered password");
+        Thread.sleep(3500);
         l.clickLogin().click();
         log.info("Clicked login");
         Thread.sleep(3500);
