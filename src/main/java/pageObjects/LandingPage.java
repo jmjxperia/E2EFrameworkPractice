@@ -8,21 +8,21 @@ public class LandingPage {
 
     public WebDriver driver;
 
-    By loginHeader=By.id("menuUserLink");
-    By username=By.xpath("//input[@name='username']");
-    By password=By.xpath("//input[@name='password']");
-    By login=By.cssSelector("[id='sign_in_btnundefined']");
-    By message=By.xpath("//label[@id='signInResultMessage']");
+    private By loginHeader=By.id("menuUserLink");
+    private By username=By.xpath("//input[@name='username']");
+    private By password=By.xpath("//input[@name='password']");
+    private By login=By.cssSelector("[id='sign_in_btnundefined']");
+    private By message=By.xpath("//label[@id='signInResultMessage']");
     //By indexing
-    By sTitle=By.xpath("(//h3[@class='roboto-regular center ng-scope'])[1]");
+    private By sTitle=By.xpath("(//h3[@class='roboto-regular center ng-scope'])[1]");
     //By Parent-child
-    By pTitle=By.xpath("//article[@id='popular_items'] //h3[@class='roboto-regular center ng-scope']");
-    By fTitle=By.xpath("//h3[contains(text(),'FOLLOW US')]");
+    private By pTitle=By.xpath("//article[@id='popular_items'] //h3[@class='roboto-regular center ng-scope']");
+    private By fTitle=By.xpath("//h3[contains(text(),'FOLLOW US')]");
 
-    By proNav=By.xpath("//a[contains(text(),'OUR PRODUCTS')]");
-    By spNav=By.xpath("//a[contains(text(),'SPECIAL OFFER')]");
-    By pNav=By.xpath("//a[contains(text(),'POPULAR ITEMS')]");
-    By cNav=By.xpath("//a[contains(text(),'CONTACT US')]");
+    private By proNav=By.xpath("//a[contains(text(),'OUR PRODUCTS')]");
+    private By spNav=By.xpath("//a[contains(text(),'SPECIAL OFFER')]");
+    private By pNav=By.xpath("//a[contains(text(),'POPULAR ITEMS')]");
+    private By cNav=By.xpath("//a[contains(text(),'CONTACT US')]");
 
     public LandingPage(WebDriver driver) {
         this.driver=driver;
