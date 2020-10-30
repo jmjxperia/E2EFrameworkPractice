@@ -6,7 +6,12 @@
     </listeners>
     <test verbose="2" preserve-order="true" name="Login test">
         <classes>
-            <class name="e2e.HomePage"/>
+            <class name="e2e.HomePage">
+                    <methods>
+                        <include name="checkLogin"/>
+                        <include name="getData"/>
+                    </methods>
+            </class>
         </classes>
     </test>
     <test name="Validate Navigation Bar">

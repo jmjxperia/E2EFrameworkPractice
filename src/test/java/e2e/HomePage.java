@@ -3,6 +3,8 @@ package e2e;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -27,7 +29,7 @@ public class HomePage extends Base {
     }
 
     @Test(dataProvider = "getData")
-    public void basePageNavigation(String userName, String pwd) throws InterruptedException {
+    public void checkLogin(String userName, String pwd) throws InterruptedException {
         driver.get(prop.getProperty("url"));
         log.info("Link opened");
         LandingPage l = new LandingPage(driver);
@@ -57,6 +59,33 @@ public class HomePage extends Base {
         data[1][0] = "imtester1";
         data[1][1] = "qwertyQaz2";
         return data;
+    }
+
+    @Test
+    public void validateNavBar()  {
+        WebDriverWait w=new WebDriverWait(driver,10);
+        LandingPage l = new LandingPage(driver);
+        w.until(ExpectedConditions.visibilityOfElementLocated(l.locatorProduct()));
+        Assert.assertTrue(l.getProductsNavigation().isDisplayed());
+        log.info("Our Products is displayed");
+        Assert.assertEquals(l.getSpecialNavigation().getText(), "SPECIAL OFFER");
+        log.info("Validated Special Offer from Navigation bar");
+        Assert.assertEquals(l.getPopularNavigation().getText(), "POPULAR ITEMS");
+        log.info("Validated Popular Items from Navigation bar");
+        Assert.assertEquals(l.getContactNavigation().getText(), "CONTACT US");
+        log.info("Validated Contact Us from Navigation bar");
+    }
+
+    @Test
+    public void validateTitle() {
+        LandingPage l = new LandingPage(driver);
+        Assert.assertEquals(l.getSpecialTitle().getText(),"SPECIAL OFFER");
+        log.info("Validated title name Special Offer");
+        Assert.assertEquals(l.getPopularTitle().getText(),"POPULAR ITEMS");
+        log.info("Validated title name Popular Items");
+        Assert.assertEquals(l.getFollowTitle().getText(),"FOLLOW US");
+        log.info("Validated title name Follow Us");
+
     }
 
     @AfterTest

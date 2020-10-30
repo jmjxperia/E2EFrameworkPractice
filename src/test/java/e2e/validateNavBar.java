@@ -29,7 +29,7 @@ public class validateNavBar extends Base{
     }
 
     @Test
-    public void basePageNavigation()  {
+    public void validateNavBar()  {
         WebDriverWait w=new WebDriverWait(driver,10);
         LandingPage l = new LandingPage(driver);
         w.until(ExpectedConditions.visibilityOfElementLocated(l.locatorProduct()));

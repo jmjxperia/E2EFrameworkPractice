@@ -4,19 +4,9 @@
     <listeners>
         <listener class-name="e2e.Listeners"/>
     </listeners>
-    <test verbose="2" preserve-order="true" name="Login test">
+    <test verbose="2" preserve-order="true" name="Test home page">
         <classes>
             <class name="e2e.HomePage"/>
-        </classes>
-    </test>
-    <test name="Validate Navigation Bar">
-        <classes>
-            <class name="e2e.validateNavBar"/>
-        </classes>
-    </test>
-    <test name="Validate Titles">
-        <classes>
-            <class name="e2e.validateTitle"/>
         </classes>
     </test>
 </suite>

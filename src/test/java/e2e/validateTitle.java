@@ -27,7 +27,7 @@ public class validateTitle extends Base {
     }
 
     @Test
-    public void basePageNavigation() {
+    public void validateTitle() {
         LandingPage l = new LandingPage(driver);
         Assert.assertEquals(l.getSpecialTitle().getText(),"SPECIAL OFFER");
         log.info("Validated title name Special Offer");
