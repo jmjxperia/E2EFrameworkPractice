@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
+import org.junit.Assert;
 import org.junit.runner.RunWith;
 import pageObjects.LandingPage;
 import resources.Base;
@@ -38,7 +39,7 @@ public class StepDefinition extends Base {
     }
     @Then("Verify user is successfully logged in")
     public void verify_user_is_successfully_logged_in() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        //System.out.println(l.verifyUsername().getText());
+        Assert.assertEquals("imtester",l.verifyUsername().getText());
     }
 }

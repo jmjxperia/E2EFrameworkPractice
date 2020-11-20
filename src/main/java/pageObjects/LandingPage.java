@@ -24,6 +24,8 @@ public class LandingPage {
     private By pNav=By.xpath("//a[contains(text(),'POPULAR ITEMS')]");
     private By cNav=By.xpath("//a[contains(text(),'CONTACT US')]");
 
+    private By verifyUser=By.xpath("//span[@class='hi-user containMiniTitle ng-binding']");
+
     public LandingPage(WebDriver driver) {
         this.driver=driver;
     }
@@ -44,6 +46,10 @@ public class LandingPage {
         return  driver.findElement(login);
     }
 
+    public  WebElement verifyUsername()
+    {
+        return driver.findElement(verifyUser);
+    }
 
     public WebElement clickLoginHeader()
     {
