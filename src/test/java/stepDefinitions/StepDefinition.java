@@ -30,10 +30,10 @@ public class StepDefinition extends Base {
         l = new LandingPage(driver);
         l.clickLoginHeader().click();
     }
-    @When("User enters username {string} and password {string}")
-    public void user_enters_username_and_password(String userName, String pwd) throws InterruptedException {
-        l.enterUsername().sendKeys(userName);
-        l.enterPassword().sendKeys(pwd);
+    @When("^User enters username (.+) and password (.+)$")
+    public void user_enters_username_and_password(String username, String password) throws InterruptedException {
+        l.enterUsername().sendKeys(username);
+        l.enterPassword().sendKeys(password);
         Thread.sleep(3500);
         l.clickLogin().click();
     }
