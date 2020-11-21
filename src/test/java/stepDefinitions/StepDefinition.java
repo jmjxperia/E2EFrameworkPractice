@@ -42,4 +42,9 @@ public class StepDefinition extends Base {
         //System.out.println(l.verifyUsername().getText());
         Assert.assertEquals("imtester",l.verifyUsername().getText());
     }
+
+    @Then("Close the browser")
+    public void close_the_browser() {
+        driver.quit();
+    }
 }

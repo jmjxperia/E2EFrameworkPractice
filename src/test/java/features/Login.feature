@@ -6,6 +6,7 @@ Feature: Application Login
     And Click on the login header to enter credentials
     When User enters username <username> and password <password>
     Then Verify user is successfully logged in
+    And  Close the browser
 
     Examples:
       | username  | password   |
